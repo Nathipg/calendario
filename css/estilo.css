@@ -13,3 +13,23 @@ table tr td, table tr th {
 h1 {
 	text-align: center;
 }
+
+.domingo {
+	color: red;
+	font-weight: bold;
+}
+
+.sabado {
+	color: blue;
+	font-weight: bold;
+}
+
+.titulo-mes {
+	background-color: lightgray;
+}
+
+#cabecalhoCalendario {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center
+}

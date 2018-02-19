@@ -28,7 +28,7 @@ class Calendario {
 		$tabelaMes = '
 			<table>
 				<thead>
-					<tr>
+					<tr class="titulo-mes">
 						<th colspan="7">' . $this->meses[$mes] . '</th>
 					</tr>
 					<tr>
@@ -50,7 +50,17 @@ class Calendario {
 					$tabelaMes .= '<td></td>';
 					$diasVaziosInicio--;
 				} else {
-					$tabelaMes .= '<td>' . $totalDias . '</td>';
+					switch( $this->diaSemanaData( $totalDias, $mes, $ano ) ) {
+						case 0:
+							$tabelaMes .= '<td class="domingo">' . $totalDias . '</td>';
+							break;
+						case 6:
+							$tabelaMes .= '<td class="sabado">' . $totalDias . '</td>';
+							break;
+						default:
+							$tabelaMes .= '<td>' . $totalDias . '</td>';
+							break;
+					}
 					$totalDias++;
 				}
 
@@ -69,8 +79,6 @@ class Calendario {
 
 	public function mostrarAno( $ano = null ) {
 		$ano = $ano == null ? date('Y') : $ano;
-
-		echo '<h1>' . $ano . '</h1>';
 
 		for( $i = 1; $i <= 12; $i++ ) {
 			$this->mostrarMes( $i, $ano );
